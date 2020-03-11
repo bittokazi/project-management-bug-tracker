@@ -3,6 +3,7 @@ import DashboardNavbarItem from "./DashboardNavbarItem";
 import { UserInfoContext } from "./../providers/UserInfoProvider";
 
 export default function DashboardSidebar(props) {
+  let subdomain = window.location.hostname.split(".");
   return (
     <UserInfoContext.Consumer>
       {userContextConsumer => (
@@ -26,7 +27,15 @@ export default function DashboardSidebar(props) {
               {userContextConsumer.user != null &&
                 userContextConsumer.user.access.sub.map(navItem => {
                   return (
-                    <DashboardNavbarItem item={navItem}></DashboardNavbarItem>
+                    <>
+                      {(subdomain.length == 3 ||
+                        (subdomain.length > 3 &&
+                          navItem.path != "/select-tenant")) && (
+                        <DashboardNavbarItem
+                          item={navItem}
+                        ></DashboardNavbarItem>
+                      )}
+                    </>
                   );
                 })}
             </ul>

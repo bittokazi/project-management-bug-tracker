@@ -1,5 +1,5 @@
 const dev = {
-  API_BASE_URL: "localhost:5000",
+  API_BASE_URL: "pmbt.bitto.io:5000",
   API_BASE_URL_PROTOCOL: "http://"
 };
 

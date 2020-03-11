@@ -72,7 +72,20 @@ export default function Signup() {
                   <div class="text-center p-t-115">
                     <span class="txt1">Registration Successful. </span>
 
-                    <Link to="/">&nbsp; Login</Link>
+                    <a
+                      href={
+                        "http://" +
+                        key +
+                        "." +
+                        subdomain[0] +
+                        "." +
+                        subdomain[1] +
+                        "." +
+                        subdomain[2]
+                      }
+                    >
+                      &nbsp; Login
+                    </a>
                   </div>
                 </Fragment>
               )}

@@ -27,6 +27,10 @@ export default class SelectTenant extends Component {
       history.push("/");
       return;
     }
+    let subdomain = window.location.hostname.split(".");
+    if (subdomain.length > 3) {
+      history.push("/dashboard");
+    }
     ApiCall().authorized(
       {
         method: "GET",

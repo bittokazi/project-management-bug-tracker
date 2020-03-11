@@ -10,7 +10,6 @@ export default function Login() {
   const [password, setPassword] = useState("");
   let useHistoryRouter = useHistory();
   let subdomain = window.location.hostname.split(".");
-  subdomain = [];
 
   useEffect(() => {
     document.title = "Login | Project Management and Bug Tracker";
@@ -64,69 +63,79 @@ export default function Login() {
   };
 
   return (
-    <div>
-      <div class="limiter">
-        <div class="container-login100">
-          <div class="wrap-login100">
-            <form class="login100-form validate-form" onSubmit={loginUser}>
-              <span class="login100-form-title p-b-26">Welcome</span>
-              <span class="login100-form-title p-b-48">
-                <i class="zmdi zmdi-font"></i>
-              </span>
+    <>
+      {subdomain.length < 5 && (
+        <div>
+          <div class="limiter">
+            <div class="container-login100">
+              <div class="wrap-login100">
+                <form class="login100-form validate-form" onSubmit={loginUser}>
+                  <span class="login100-form-title p-b-26">Welcome</span>
+                  <span class="login100-form-title p-b-48">
+                    <i class="zmdi zmdi-font"></i>
+                  </span>
 
-              <div
-                class="wrap-input100 validate-input"
-                data-validate="Valid email is: a@b.c"
-              >
-                <input
-                  class="input100"
-                  type="text"
-                  name="email"
-                  value={username}
-                  onChange={event => setUsername(event.target.value)}
-                />
-                <span class="focus-input100" data-placeholder="Email"></span>
-              </div>
-
-              <div
-                class="wrap-input100 validate-input"
-                data-validate="Enter password"
-              >
-                <span class="btn-show-pass">
-                  <i class="zmdi zmdi-eye"></i>
-                </span>
-                <input
-                  class="input100"
-                  type="password"
-                  name="pass"
-                  value={password}
-                  onChange={event => setPassword(event.target.value)}
-                />
-                <span class="focus-input100" data-placeholder="Password"></span>
-              </div>
-
-              <div class="container-login100-form-btn">
-                <div class="wrap-login100-form-btn">
-                  <div class="login100-form-bgbtn"></div>
-                  <button class="login100-form-btn">Login</button>
-                </div>
-              </div>
-
-              {subdomain &&
-                (subdomain.length < 3 ||
-                  (subdomain.length == 3 && subdomain[0] == "www")) && (
-                  <div class="text-center p-t-115">
-                    <span class="txt1">Don’t have an account?</span>
-
-                    <Link to="/signup">&nbsp;Sign Up</Link>
+                  <div
+                    class="wrap-input100 validate-input"
+                    data-validate="Valid email is: a@b.c"
+                  >
+                    <input
+                      class="input100"
+                      type="text"
+                      name="email"
+                      value={username}
+                      onChange={event => setUsername(event.target.value)}
+                    />
+                    <span
+                      class="focus-input100"
+                      data-placeholder="Email"
+                    ></span>
                   </div>
-                )}
-            </form>
-          </div>
-        </div>
-      </div>
 
-      <div id="dropDownSelect1"></div>
-    </div>
+                  <div
+                    class="wrap-input100 validate-input"
+                    data-validate="Enter password"
+                  >
+                    <span class="btn-show-pass">
+                      <i class="zmdi zmdi-eye"></i>
+                    </span>
+                    <input
+                      class="input100"
+                      type="password"
+                      name="pass"
+                      value={password}
+                      onChange={event => setPassword(event.target.value)}
+                    />
+                    <span
+                      class="focus-input100"
+                      data-placeholder="Password"
+                    ></span>
+                  </div>
+
+                  <div class="container-login100-form-btn">
+                    <div class="wrap-login100-form-btn">
+                      <div class="login100-form-bgbtn"></div>
+                      <button class="login100-form-btn">Login</button>
+                    </div>
+                  </div>
+
+                  {subdomain &&
+                    (subdomain.length < 4 ||
+                      (subdomain.length == 3 && subdomain[0] == "pmbt")) && (
+                      <div class="text-center p-t-115">
+                        <span class="txt1">Don’t have an account?</span>
+
+                        <Link to="/signup">&nbsp;Sign Up</Link>
+                      </div>
+                    )}
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div id="dropDownSelect1"></div>
+        </div>
+      )}
+    </>
   );
 }
