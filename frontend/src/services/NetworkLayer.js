@@ -20,11 +20,7 @@ export const ApiCall = () => {
   const subdomain = window.location.hostname.split(".");
   if (subdomain.length == 4 && subdomain[0] != "www") {
     baseURL =
-      config.API_BASE_URL_PROTOCOL +
-      "." +
-      subdomain[0] +
-      "." +
-      config.API_BASE_URL;
+      config.API_BASE_URL_PROTOCOL + subdomain[0] + "." + config.API_BASE_URL;
   }
   return {
     public: () => {
