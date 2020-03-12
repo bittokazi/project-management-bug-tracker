@@ -1,4 +1,5 @@
 import { HelloWorld } from "./../controllers/HelloController";
+import { companyCheckAPI } from "./../controllers/PublicAPIController";
 
 import userRoutes from "./User";
 import companyRoutes from "./Company";
@@ -14,6 +15,7 @@ import authRoutes from "./Auth";
 
 export const Routes = app => {
   app.get("/health", HelloWorld);
+  app.get("/public/company/check/:key", companyCheckAPI);
   app.use(
     "/api/users",
     app.oauth.authenticate(),

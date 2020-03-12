@@ -111,6 +111,29 @@ export const getCompanyFromKey = (key, callback) => {
     });
 };
 
+export const getCompanyEntityFromKey = (key, callback) => {
+  db.company
+    .findAll({
+      attributes: ["id", "name"],
+      where: {
+        key
+      },
+      raw: true,
+      order: [["id", "DESC"]]
+    })
+    .then(result1 => {
+      if (result1.length > 0) {
+        let companyid = result1[0].id;
+        callback({
+          companyid,
+          name: result1[0].name
+        });
+      } else {
+        callback(null);
+      }
+    });
+};
+
 export const userCompanyExist = (payload, success, error) => {
   db.companyuser
     .findAll({
