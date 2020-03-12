@@ -56,6 +56,7 @@ export const UserAccess = (role, req) => {
     role == UserRole.owner ||
     (role == UserRole.superAdmin && req.tenant)
   ) {
+    console.log(req.tenant, role);
     let userPaths = ResoucePathGenerator("/dashboard", "users");
     // let companyPaths = ResoucePathGenerator("/dashboard", "companies");
     let taskPaths = ResoucePathGenerator("/dashboard", "tasks");

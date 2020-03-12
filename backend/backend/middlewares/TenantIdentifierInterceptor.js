@@ -18,7 +18,13 @@ export default function TenantIdentifierInterceptor(req, res, next) {
     req.tenant = {
       key: req.header("tenant")
     };
-  } else if (req.subdomains.length == 1 && req.subdomains[0] == "pmbt") {
+  } else if (
+    req.subdomains.length == 1 &&
+    req.subdomains[0] == "pmbt" &&
+    req.header("tenant") &&
+    req.header("tenant") != "null" &&
+    req.header("tenant") != ""
+  ) {
     req.tenant = {
       key: req.header("tenant")
     };
