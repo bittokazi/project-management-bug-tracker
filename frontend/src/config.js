@@ -1,16 +1,22 @@
 const dev = {
-  API_BASE_URL: "pmbt.bitto.io:5000",
-  API_BASE_URL_PROTOCOL: "http://"
+  API_BASE_URL: "welldev.pmbt.bitto.website",
+  API_BASE_URL_PROTOCOL: "http://",
+  subdomainMode: false,
+  subdomainNumber: 0,
 };
 
 const stage = {
   API_BASE_URL: "pmbt.bitto.website",
-  API_BASE_URL_PROTOCOL: "http://"
+  API_BASE_URL_PROTOCOL: "http://",
+  subdomainMode: true,
+  subdomainNumber: 4
 };
 
 const prod = {
   API_BASE_URL: "pmbt-staging.herokuapp.com",
-  API_BASE_URL_PROTOCOL: "https://"
+  API_BASE_URL_PROTOCOL: "https://",
+  subdomainMode: false,
+  subdomainNumber: 0
 };
 
 let config = {};

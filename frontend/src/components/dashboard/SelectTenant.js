@@ -2,6 +2,7 @@ import React, { useState, Component } from "react";
 import UserInfoProvider from "./../../providers/UserInfoProvider";
 import { ApiCall } from "./../../services/NetworkLayer";
 import AuthStore from "./../../services/AuthStore";
+import config from "./../../config";
 
 let $ = window.$;
 
@@ -28,7 +29,7 @@ export default class SelectTenant extends Component {
       return;
     }
     let subdomain = window.location.hostname.split(".");
-    if (subdomain.length > 3) {
+    if (config.subdomainMode && subdomain.length > config.subdomainNumber - 1 && subdomain[0] != "www") {
       history.push("/dashboard");
     }
     ApiCall().authorized(

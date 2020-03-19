@@ -19,7 +19,7 @@ const encodedToken = () => {
 export const ApiCall = () => {
   const subdomain = window.location.hostname.split(".");
   console.log(subdomain, "fefefefe");
-  if (subdomain.length == 4 && subdomain[0] != "www") {
+  if (config.subdomainMode && subdomain.length == config.subdomainNumber && subdomain[0] != "www") {
     baseURL =
       config.API_BASE_URL_PROTOCOL + subdomain[0] + "." + config.API_BASE_URL;
   }
