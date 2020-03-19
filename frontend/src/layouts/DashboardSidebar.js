@@ -31,8 +31,8 @@ export default function DashboardSidebar(props) {
                     <>
                       {(subdomain.length == config.subdomainNumber - 1 || !config.subdomainMode ||
                         (subdomain.length > config.subdomainNumber - 1 &&
-                          navItem.path != "/select-tenant") || 
-                          (subdomain.length > config.subdomainNumber - 1 && subdomain[0] != "www")) && (
+                          navItem.path != "/select-tenant" && subdomain[0] != "www") || 
+                          (subdomain.length > config.subdomainNumber - 1 && subdomain[0] == "www")) && (
                         <DashboardNavbarItem
                           item={navItem}
                         ></DashboardNavbarItem>
