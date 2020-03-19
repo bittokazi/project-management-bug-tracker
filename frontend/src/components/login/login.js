@@ -20,6 +20,8 @@ export default function Login() {
       checkCompany(subdomain[0]);
     } else if (subdomain.length == config.subdomainNumber && subdomain[0] == "www") {
       setCompanyExist(true);
+    } else if (subdomain.length == config.subdomainNumber-1) {
+      setCompanyExist(true);
     } else if (!config.subdomainMode) {
       setCompanyExist(true);
     }
