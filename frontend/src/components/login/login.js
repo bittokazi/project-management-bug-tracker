@@ -4,6 +4,7 @@ import { ApiCall } from "./../../services/NetworkLayer";
 import AuthStore from "./../../services/AuthStore";
 import querystring from "querystring";
 import { Link } from "react-router-dom";
+import config from "./../../config";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -15,9 +16,11 @@ export default function Login() {
 
   useEffect(() => {
     document.title = "Login | Project Management and Bug Tracker";
-    if (subdomain.length == 4) {
+    if (subdomain.length == config.subdomainNumber) {
       checkCompany(subdomain[0]);
-    } else if (subdomain.length == 3 && subdomain[0] == "pmbt") {
+    } else if (subdomain.length == config.subdomainNumber - 1 && subdomain[0] != "www") {
+      setCompanyExist(true);
+    } else if (!config.subdomainMode) {
       setCompanyExist(true);
     }
   }, []);
@@ -88,7 +91,7 @@ export default function Login() {
 
   return (
     <>
-      {subdomain.length < 5 && (
+      { (!config.subdomainMode || subdomain.length < config.subdomainNumber+1) && (
         <>
           {companyExist && (
             <div>
@@ -151,9 +154,9 @@ export default function Login() {
                       </div>
 
                       {subdomain &&
-                        (subdomain.length < 4 ||
-                          (subdomain.length == 3 &&
-                            subdomain[0] == "pmbt")) && (
+                        (!config.subdomainMode ||
+                          (subdomain.length == config.subdomainNumber - 1) || 
+                          (subdomain.length == config.subdomainNumber && subdomain[0]=="www")) && (
                           <div class="text-center p-t-115">
                             <span class="txt1">Don’t have an account?</span>
 

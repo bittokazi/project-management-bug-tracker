@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import DashboardNavbarItem from "./DashboardNavbarItem";
 import { UserInfoContext } from "./../providers/UserInfoProvider";
+import config from "./../config";
 
 export default function DashboardSidebar(props) {
   let subdomain = window.location.hostname.split(".");
@@ -28,9 +29,10 @@ export default function DashboardSidebar(props) {
                 userContextConsumer.user.access.sub.map(navItem => {
                   return (
                     <>
-                      {(subdomain.length == 3 ||
-                        (subdomain.length > 3 &&
-                          navItem.path != "/select-tenant")) && (
+                      {(subdomain.length == config.subdomainNumber - 1 || !config.subdomainMode ||
+                        (subdomain.length > config.subdomainNumber - 1 &&
+                          navItem.path != "/select-tenant") || 
+                          (subdomain.length > config.subdomainNumber - 1 && subdomain[0] != "www")) && (
                         <DashboardNavbarItem
                           item={navItem}
                         ></DashboardNavbarItem>

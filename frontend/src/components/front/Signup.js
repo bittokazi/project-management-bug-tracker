@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { ApiCall } from "./../../services/NetworkLayer";
 import AuthStore from "./../../services/AuthStore";
 import { Link } from "react-router-dom";
+import config from "./../../config";
 
 export default function Signup() {
   const [username, setUsername] = useState("");
@@ -72,20 +73,29 @@ export default function Signup() {
                   <div class="text-center p-t-115">
                     <span class="txt1">Registration Successful. </span>
 
-                    <a
-                      href={
-                        "http://" +
-                        key +
-                        "." +
-                        subdomain[0] +
-                        "." +
-                        subdomain[1] +
-                        "." +
-                        subdomain[2]
-                      }
-                    >
-                      &nbsp; Login
-                    </a>
+                    {
+                      !config.subdomainMode && 
+                      <a
+                        href={
+                          "http://" +
+                          subdomain.join('.')
+                        }
+                      >&nbsp; Login
+                      </a>
+                    }
+                    {
+                      config.subdomainMode && 
+                      <a
+                        href={
+                          "http://" +
+                          key +
+                          "." +
+                          subdomain.join('.').replace("www.", "")
+                        }
+                      >&nbsp; Login
+                      </a>
+                    }
+                      
                   </div>
                 </Fragment>
               )}

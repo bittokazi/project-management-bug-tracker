@@ -19,14 +19,14 @@ const getItemStyle = (isDragging, draggableStyle) => ({
 
 export default function BoardItem({ provided, snapshot, item }) {
   return (
-    // <div
-    //   class="panel panel-primary"
-    //   ref={provided.innerRef}
-    //   {...provided.draggableProps}
-    //   {...provided.dragHandleProps}
-    //   style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}
-    // >
-    <div>
+    <div
+      class="panel panel-primary"
+      ref={provided.innerRef}
+      {...provided.draggableProps}
+      {...provided.dragHandleProps}
+      style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}
+    >
+    {/* <div> */}
       <div class="panel panel-primary">
         <div class="panel-heading">{item.name}</div>
 
