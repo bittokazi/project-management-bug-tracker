@@ -16,9 +16,9 @@ export default function Login() {
 
   useEffect(() => {
     document.title = "Login | Project Management and Bug Tracker";
-    if (subdomain.length == config.subdomainNumber) {
+    if (subdomain.length == config.subdomainNumber && subdomain[0] != "www") {
       checkCompany(subdomain[0]);
-    } else if (subdomain.length == config.subdomainNumber - 1 && subdomain[0] != "www") {
+    } else if (subdomain.length == config.subdomainNumber-1 && subdomain[0] != "www") {
       setCompanyExist(true);
     } else if (!config.subdomainMode) {
       setCompanyExist(true);
