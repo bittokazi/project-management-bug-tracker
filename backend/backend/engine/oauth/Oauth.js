@@ -4,7 +4,7 @@ export const Oauth = app => {
   app.oauth = new OAuthServer({
     debug: true,
     model: require("./model"),
-    accessTokenLifetime: 10 * 1,
+    accessTokenLifetime: 60 * 10,
     refreshTokenLifetime: 365 * 24 * 3600
   });
 
