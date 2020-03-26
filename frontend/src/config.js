@@ -1,8 +1,8 @@
 const dev = {
-  API_BASE_URL: "welldev.pmbt.bitto.website",
+  API_BASE_URL: "pmbt.bitto.website",
   API_BASE_URL_PROTOCOL: "http://",
   subdomainMode: false,
-  subdomainNumber: 0,
+  subdomainNumber: 0
 };
 
 const stage = {

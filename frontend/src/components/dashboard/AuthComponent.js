@@ -72,7 +72,7 @@ export class AuthComponent extends Component {
             });
           }, 1000);
           if (this.props.authSuccess) {
-            this.props.authSuccess();
+            this.props.authSuccess(resolve.data);
           }
         }
       },

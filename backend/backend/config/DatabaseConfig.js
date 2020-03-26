@@ -6,7 +6,7 @@ module.exports = {
     username: "postgres",
     password: "password",
     database: "pmbt_dev",
-    host: "172.17.0.2",
+    host: "0.0.0.0",
     port: 5432,
     dialect: "postgres"
   },
