@@ -72,7 +72,9 @@ export class AuthComponent extends Component {
             });
           }, 1000);
           if (this.props.authSuccess) {
+            this.context.chat.connectChat = true;
             this.props.authSuccess(resolve.data);
+            this.context.chat.connectChatComponent();
           }
         }
       },

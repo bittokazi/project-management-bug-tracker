@@ -6,17 +6,20 @@ import Dashboard from "./components/dashboard/Dashboard";
 import Signup from "./components/front/Signup";
 import SelectTenant from "./components/dashboard/SelectTenant";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import UserInfoProvider from "./providers/UserInfoProvider";
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={Login} />
-        <Route path="/dashboard" component={Dashboard} />
-        <Route exact path="/signup" component={Signup} />
-        <Route exact path="/select-tenant" component={SelectTenant} />
-      </Switch>
-    </Router>
+    <UserInfoProvider>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route path="/dashboard" component={Dashboard} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/select-tenant" component={SelectTenant} />
+        </Switch>
+      </Router>
+    </UserInfoProvider>
   );
 }
 

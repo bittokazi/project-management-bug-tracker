@@ -6,6 +6,8 @@ import {
   userCompanyExist
 } from "./CompanyService";
 import { validationResult } from "express-validator";
+import { KJUR } from "jsrsasign";
+import Config from "./../config/Config";
 
 export const getAllUsers = (req, success, error) => {
   let where = {};
@@ -158,4 +160,20 @@ export const addUser = (user, success, error) => {
     .catch(err => {
       error(err);
     });
+};
+
+export const generateChatServerToken = user => {
+  const header = JSON.stringify({ alg: "HS256", typ: "JWT" });
+  const payload = JSON.stringify({
+    tenant: user.tenant,
+    id: user.id,
+    name: user.username
+  });
+  const authToken = KJUR.jws.JWS.sign(
+    "HS256",
+    header,
+    payload,
+    Config().JWT_SECRET
+  );
+  return authToken;
 };

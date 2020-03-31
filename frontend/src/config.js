@@ -1,6 +1,7 @@
 const dev = {
-  API_BASE_URL: "pmbt.bitto.website",
+  API_BASE_URL: "localhost:5000",
   API_BASE_URL_PROTOCOL: "http://",
+  CHAT_SERVER_URL: "http://localhost:5262",
   subdomainMode: false,
   subdomainNumber: 0
 };
@@ -8,6 +9,7 @@ const dev = {
 const stage = {
   API_BASE_URL: "pmbt.bitto.website",
   API_BASE_URL_PROTOCOL: "http://",
+  CHAT_SERVER_URL: "http://chat-pmbt.bitto.website",
   subdomainMode: true,
   subdomainNumber: 4
 };
@@ -15,6 +17,7 @@ const stage = {
 const prod = {
   API_BASE_URL: "pmbt-staging.herokuapp.com",
   API_BASE_URL_PROTOCOL: "https://",
+  CHAT_SERVER_URL: "http://chat-pmbt.bitto.website",
   subdomainMode: false,
   subdomainNumber: 0
 };
