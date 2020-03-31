@@ -1,7 +1,8 @@
 import {
   getAllUsers,
   checkUserAndEmailExist,
-  addUserProtected
+  addUserProtected,
+  generateChatServerToken
 } from "./../service/UserService";
 import UserAccess from "./../service/UserAccess";
 import md5 from "md5";
@@ -64,5 +65,17 @@ export const whoAmI = (req, res, next) => {
     tenant: req.tenant ? req.tenant.key : "",
     image: `http://www.gravatar.com/avatar/${md5(req.user.email)}?d=identicon`,
     access: UserAccess(req.user.role, req)
+  });
+};
+
+export const getChatServerToken = (req, res, next) => {
+  const user = {
+    username: req.user.username,
+    tenant: req.tenant ? req.tenant.key : "",
+    id: req.user.id
+  };
+  const token = generateChatServerToken(user);
+  return res.status(200).json({
+    token
   });
 };

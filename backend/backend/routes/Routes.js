@@ -8,6 +8,10 @@ import tenantRoutes from "./Tenant";
 import projectRoutes from "./Project";
 import boardRoutes from "./Board";
 
+import chatServiceRoutes from "./ChatService";
+import ServiceAuthMiddleware from "./../middlewares/ServiceAuthMiddleware";
+import ServiceTenantIdentifier from "./../middlewares/ServiceTenantIdentifier";
+
 import UserInfo from "./../engine/oauth/OauthInfoInterceptor";
 import TenantUserRole from "./../middlewares/TenantUserRole";
 import TenantIdentifierInterceptor from "./../middlewares/TenantIdentifierInterceptor";
@@ -58,6 +62,12 @@ export const Routes = app => {
   );
   app.use("/api/tenant", app.oauth.authenticate(), UserInfo, tenantRoutes);
   app.use("/api/login", authRoutes);
+  app.use(
+    "/service/chat",
+    ServiceAuthMiddleware,
+    ServiceTenantIdentifier,
+    chatServiceRoutes
+  );
 };
 
 export default Routes;
