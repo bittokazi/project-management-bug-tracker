@@ -334,6 +334,12 @@ input[type="search"]::-webkit-search-decoration {
   height: 300px;
 }
 
+.portlet-body.chat-list-widget {
+  overflow-y: auto;
+  width: auto;
+  height: 452px;
+}
+
 .portlet .portlet-footer {
   padding: 10px 15px;
   background: #e0e7e8;
@@ -438,4 +444,33 @@ input[type="search"]::-webkit-search-decoration {
 
 .text-red {
   color: #e74c3c;
+}
+
+.chat-plus-button {
+  position: absolute;
+  bottom: 30px;
+  right: 59px;
+  height: 50px;
+  width: 48px;
+  color: white;
+  background: #34495e;
+  font-size: 40px;
+  text-align: center;
+  border-radius: 50px;
+  padding: 5px;
+  line-height: 0;
+}
+
+.chat-disconnect {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  padding-top: 200px;
+  z-index: 1;
+}
+
+.chat-window-close-btn {
+  font-size: 22px;
+  line-height: 0;
 }

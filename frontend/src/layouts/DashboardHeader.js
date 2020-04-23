@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function DashboardHeader() {
   return (
     <UserInfoContext.Consumer>
-      {userContextConsumer => (
+      {(userContextConsumer) => (
         <nav class="navbar navbar-default navbar-static-top">
           <div class="navbar-header">
             <Link
@@ -34,24 +34,6 @@ export default function DashboardHeader() {
               </li>
             </ul>
             <ul class="nav navbar-top-links navbar-right pull-right">
-              <li>
-                <form
-                  role="search"
-                  class="app-search hidden-xs"
-                  onSubmit={event => {
-                    event.preventDefault();
-                  }}
-                >
-                  <input
-                    type="text"
-                    placeholder="Search..."
-                    class="form-control"
-                  />
-                  <a href="">
-                    <i class="ti-search"></i>
-                  </a>
-                </form>
-              </li>
               <li>
                 <a class="profile-pic">
                   <img
