@@ -3,15 +3,15 @@ const dev = {
   API_BASE_URL_PROTOCOL: "http://",
   CHAT_SERVER_URL: "http://localhost:5262",
   subdomainMode: false,
-  subdomainNumber: 0
+  subdomainNumber: 0,
 };
 
 const stage = {
   API_BASE_URL: "pmbt.bitto.website",
-  API_BASE_URL_PROTOCOL: "http://",
+  API_BASE_URL_PROTOCOL: "https://",
   CHAT_SERVER_URL: "http://chat-pmbt.bitto.website",
   subdomainMode: true,
-  subdomainNumber: 4
+  subdomainNumber: 4,
 };
 
 const prod = {
@@ -19,7 +19,7 @@ const prod = {
   API_BASE_URL_PROTOCOL: "https://",
   CHAT_SERVER_URL: "http://chat-pmbt.bitto.website",
   subdomainMode: false,
-  subdomainNumber: 0
+  subdomainNumber: 0,
 };
 
 let config = {};
@@ -33,5 +33,5 @@ if (process.env.REACT_APP_STAGE === "production") {
 }
 
 export default {
-  ...config
+  ...config,
 };
