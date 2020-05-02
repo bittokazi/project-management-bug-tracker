@@ -20,7 +20,7 @@ export default function DashboardHeader() {
             <div class="top-left-part">
               <a class="logo">
                 <i class="glyphicon glyphicon-fire"></i>&nbsp;
-                <span class="hidden-xs">PMBT v1.0.3</span>
+                <span class="hidden-xs">PMBT v1.0.4</span>
               </a>
             </div>
             <ul class="nav navbar-top-links navbar-left hidden-xs">
