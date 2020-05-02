@@ -27,6 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "build:dev": "REACT_APP_STAGE=dev npm run build",
     "build:stage": "REACT_APP_STAGE=staging npm run build",
     "build:prod": "REACT_APP_STAGE=production npm run build"
   },
