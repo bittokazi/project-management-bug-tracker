@@ -18,12 +18,18 @@ export default function Login() {
     document.title = "Login | Project Management and Bug Tracker";
     if (subdomain.length == config.subdomainNumber && subdomain[0] != "www") {
       checkCompany(subdomain[0]);
-    } else if (subdomain.length == config.subdomainNumber && subdomain[0] == "www") {
+    } else if (
+      subdomain.length == config.subdomainNumber &&
+      subdomain[0] == "www"
+    ) {
       setCompanyExist(true);
-    } else if (subdomain.length == config.subdomainNumber-1) {
+      authCheck();
+    } else if (subdomain.length == config.subdomainNumber - 1) {
       setCompanyExist(true);
+      authCheck();
     } else if (!config.subdomainMode) {
       setCompanyExist(true);
+      authCheck();
     }
   }, []);
 
@@ -32,41 +38,41 @@ export default function Login() {
       ApiCall().authorized(
         {
           method: "GET",
-          url: "/users/whoami"
+          url: "/users/whoami",
         },
-        resolve => {
+        (resolve) => {
           if (resolve.status >= 200) {
             useHistoryRouter.push("/dashboard");
           }
         },
-        reject => {}
+        (reject) => {}
       );
     }
   };
 
-  const checkCompany = key => {
+  const checkCompany = (key) => {
     ApiCall()
       .public()
       .get("/public/company/check/" + key)
-      .then(res => {
+      .then((res) => {
         setCompanyName(res.data.name);
         setCompanyExist(true);
         authCheck();
       })
-      .catch(err => {
+      .catch((err) => {
         setCompanyExist(false);
       });
   };
 
-  const loginUser = event => {
+  const loginUser = (event) => {
     event.preventDefault();
     ApiCall()
       .public()
       .post("/api/login", {
         username,
-        password
+        password,
       })
-      .then(res => {
+      .then((res) => {
         AuthStore().saveClientCredentials(res.data);
         ApiCall()
           .token()
@@ -75,25 +81,26 @@ export default function Login() {
             querystring.stringify({
               username,
               password,
-              grant_type: "password"
+              grant_type: "password",
             })
           )
-          .then(res => {
+          .then((res) => {
             AuthStore().saveOauthToken(res.data);
             useHistoryRouter.push("/dashboard");
           })
-          .catch(err => {
+          .catch((err) => {
             console.log(err);
           });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   };
 
   return (
     <>
-      { (!config.subdomainMode || subdomain.length < config.subdomainNumber+1) && (
+      {(!config.subdomainMode ||
+        subdomain.length < config.subdomainNumber + 1) && (
         <>
           {companyExist && (
             <div>
@@ -120,7 +127,7 @@ export default function Login() {
                           type="text"
                           name="email"
                           value={username}
-                          onChange={event => setUsername(event.target.value)}
+                          onChange={(event) => setUsername(event.target.value)}
                         />
                         <span
                           class="focus-input100"
@@ -140,7 +147,7 @@ export default function Login() {
                           type="password"
                           name="pass"
                           value={password}
-                          onChange={event => setPassword(event.target.value)}
+                          onChange={(event) => setPassword(event.target.value)}
                         />
                         <span
                           class="focus-input100"
@@ -157,8 +164,9 @@ export default function Login() {
 
                       {subdomain &&
                         (!config.subdomainMode ||
-                          (subdomain.length == config.subdomainNumber - 1) || 
-                          (subdomain.length == config.subdomainNumber && subdomain[0]=="www")) && (
+                          subdomain.length == config.subdomainNumber - 1 ||
+                          (subdomain.length == config.subdomainNumber &&
+                            subdomain[0] == "www")) && (
                           <div class="text-center p-t-115">
                             <span class="txt1">Don’t have an account?</span>
 
