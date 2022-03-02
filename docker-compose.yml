@@ -1,6 +1,6 @@
 version: "3"
 services:
-  nodejs-notes-app:
+  project-management-bug-tracker:
     image: "project-management-bug-tracker:latest"
     restart: always
     network_mode: bridge
