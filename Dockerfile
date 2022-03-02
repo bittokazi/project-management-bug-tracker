@@ -5,7 +5,7 @@ RUN npm install
 WORKDIR /app/frontend
 RUN npm install
 RUN npm run build:stage
-RUN cp -r ./dist ./../spaBuild
+RUN cp -r ./build ./../spaBuild
 WORKDIR /app
 EXPOSE 5060
 CMD [ "node", "server.js" ]
