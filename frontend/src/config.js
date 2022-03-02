@@ -7,9 +7,9 @@ const dev = {
 };
 
 const stage = {
-  API_BASE_URL: "pmbt.bitto.website",
+  API_BASE_URL: "pmbt.bittokazi.com",
   API_BASE_URL_PROTOCOL: "https://",
-  CHAT_SERVER_URL: "https://chat-pmbt.bitto.website",
+  CHAT_SERVER_URL: "https://chat-pmbt.bittokazi.com",
   subdomainMode: true,
   subdomainNumber: 4,
 };

@@ -1,0 +1,9 @@
+version: "3"
+services:
+  nodejs-notes-app:
+    image: "project-management-bug-tracker:latest"
+    restart: always
+    network_mode: bridge
+    env_file: .env
+    ports:
+      - "5060:5060"
