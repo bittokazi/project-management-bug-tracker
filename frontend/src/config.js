@@ -9,7 +9,7 @@ const dev = {
 const stage = {
   API_BASE_URL: "pmbt.bittokazi.com",
   API_BASE_URL_PROTOCOL: "https://",
-  CHAT_SERVER_URL: "/socket.io",
+  CHAT_SERVER_URL: "",
   subdomainMode: true,
   subdomainNumber: 4,
 };
@@ -17,7 +17,7 @@ const stage = {
 const prod = {
   API_BASE_URL: "pmbt-staging.herokuapp.com",
   API_BASE_URL_PROTOCOL: "https://",
-  CHAT_SERVER_URL: "/socket.io",
+  CHAT_SERVER_URL: "",
   subdomainMode: false,
   subdomainNumber: 0,
 };
