@@ -1,6 +1,10 @@
 version: "3"
 services:
   project-management-bug-tracker:
+    container_name: project-management-bug-tracker
+    build:
+      context: ./
+      dockerfile: Dockerfile
     image: "project-management-bug-tracker:latest"
     restart: always
     network_mode: bridge
